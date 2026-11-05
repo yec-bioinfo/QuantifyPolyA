@@ -109,7 +109,7 @@ Load.PolyA <- function(files,dir){
 #'
 Remove.IP <- function(QpolyA,fasta,flank_len=15,win_size=10,min_A=8){
   # Check parameters.
-  if (class(QpolyA) != "QuantifyPolyA") stop(paste('QpolyA should be a QuantifyPolyA object!'))
+  if (!inherits(QpolyA, "QuantifyPolyA")) stop(paste('QpolyA should be a QuantifyPolyA object!'))
   if (!file.exists(fasta)) stop(paste('Fasta file',fasta,'does not exist!'))
   if (!is.numeric(flank_len)) stop("'flank_len' is not a number!")
   if (flank_len<=0) stop("'flank_len' should be larger than 0, the default value is 15!")
@@ -144,7 +144,7 @@ Remove.IP <- function(QpolyA,fasta,flank_len=15,win_size=10,min_A=8){
 #'
 Cluster.PolyA <- function(QpolyA, max.gapwidth = 24, mc.cores = 4){
   # Check parameters.
-  if (class(QpolyA) != "QuantifyPolyA") stop(paste('QpolyA should be a QuantifyPolyA object!'))
+  if (!inherits(QpolyA, "QuantifyPolyA")) stop(paste('QpolyA should be a QuantifyPolyA object!'))
   if (!is.numeric(max.gapwidth)) stop("'max.gapwidth' is not a number!")
   if (max.gapwidth<=0) stop("'max.gapwidth' should be larger than 0, the default value is 24!")
   if (!is.numeric(mc.cores)) stop("'mc.cores' is not a number!")
@@ -209,7 +209,7 @@ Cluster.PolyA <- function(QpolyA, max.gapwidth = 24, mc.cores = 4){
 #'
 Annotate.PolyA <- function(QpolyA,gff,seq.levels=NA){
   # Check parameters.
-  if (class(QpolyA) != "QuantifyPolyA") stop(paste('QpolyA should be a QuantifyPolyA object!'))
+  if (!inherits(QpolyA, "QuantifyPolyA")) stop(paste('QpolyA should be a QuantifyPolyA object!'))
   if (!file.exists(gff)) stop(paste('Annotation file',gff,'does not exist!'))
   
   # Annotate polyA sites
@@ -261,8 +261,8 @@ Annotate.PolyA <- function(QpolyA,gff,seq.levels=NA){
 Visualize.PolyA <- function(QpolyA,anno,gene.id,sample.names,coord.lim){
   options(warn = -1)
   # Check parameters.
-  if (class(QpolyA) != "QuantifyPolyA") stop(paste('QpolyA should be a QuantifyPolyA object!'))
-  if (class(anno)!='GRanges') stop('anno is not a GRanges object!')
+  if (!inherits(QpolyA, "QuantifyPolyA")) stop(paste('QpolyA should be a QuantifyPolyA object!'))
+  if (!inherits(anno,'GRanges')) stop('anno is not a GRanges object!')
   if (missing(gene.id)) stop('gene.id is not set!')
   if (!(gene.id %in% anno@elementMetadata@listData$gene_id)) stop(paste(c(gene.id,' dose not exist, please check the gene id!'),collapse = ''))
   if (missing(sample.names)) {
@@ -343,7 +343,7 @@ Visualize.PolyA <- function(QpolyA,anno,gene.id,sample.names,coord.lim){
 #'
 Filter.PolyA <- function(QpolyA,min_count = 10,min_sample = 1){
   # Check parameters.
-  if (class(QpolyA) != "QuantifyPolyA") stop(paste('QpolyA should be a QuantifyPolyA object!'))
+  if (!inherits(QpolyA, "QuantifyPolyA")) stop(paste('QpolyA should be a QuantifyPolyA object!'))
   if (!is.numeric(min_count)) stop("'min_count' is not a number!")
   if (min_count<=0) stop("'min_count' should be larger than 0, the default value is 10!")
   if (!is.numeric(min_sample)) stop("'min_sample' is not a number!")
@@ -376,7 +376,7 @@ Filter.PolyA <- function(QpolyA,min_count = 10,min_sample = 1){
 #'
 DESeq2.PolyA <- function(QpolyA,colData){
   # Check parameters.
-  if (class(QpolyA) != "QuantifyPolyA") stop(paste('QpolyA should be a QuantifyPolyA object!'))
+  if (!inherits(QpolyA, "QuantifyPolyA")) stop(paste('QpolyA should be a QuantifyPolyA object!'))
   if (!is.data.frame(colData)) stop("'colData' is not a data.frame!")
   if (isEmpty(colData$condition)) stop("'colData' does not contain a 'condition' column!")
   if (!isEmpty(setdiff(rownames(colData),QpolyA@sample_names))) stop("Inconsistency between rownames of 'colData' and sample names!")
@@ -467,7 +467,7 @@ DESeq2.PolyA <- function(QpolyA,colData){
 #'
 Quantify.SplitAPA <- function(QpolyA,colData,contrast){
   # Check parameters.
-  if (class(QpolyA) != "QuantifyPolyA") stop(paste('QpolyA should be a QuantifyPolyA object!'))
+  if (!inherits(QpolyA, "QuantifyPolyA")) stop(paste('QpolyA should be a QuantifyPolyA object!'))
   if (!is.data.frame(colData)) stop("'colData' is not a data.frame!")
   if (isEmpty(colData$condition)) stop("'colData' does not contain a 'condition' column!")
   if (!isEmpty(setdiff(rownames(colData),QpolyA@sample_names))) stop("Inconsistency between rownames of 'colData' and sample names!")
@@ -505,7 +505,7 @@ Quantify.SplitAPA <- function(QpolyA,colData,contrast){
 #'
 Quantify.CanonicalAPA <- function(QpolyA,colData,contrast){
   # Check parameters.
-  if (class(QpolyA) != "QuantifyPolyA") stop(paste('QpolyA should be a QuantifyPolyA object!'))
+  if (!inherits(QpolyA, "QuantifyPolyA")) stop(paste('QpolyA should be a QuantifyPolyA object!'))
   if (!is.data.frame(colData)) stop("'colData' is not a data.frame!")
   if (isEmpty(colData$condition)) stop("'colData' does not contain a 'condition' column!")
   if (!isEmpty(setdiff(rownames(colData),QpolyA@sample_names))) stop("Inconsistency between rownames of 'colData' and sample names!")
@@ -543,7 +543,7 @@ Quantify.CanonicalAPA <- function(QpolyA,colData,contrast){
 #'
 Quantify.CNCAPA <- function(QpolyA,colData,contrast){
   # Check parameters.
-  if (class(QpolyA) != "QuantifyPolyA") stop(paste('QpolyA should be a QuantifyPolyA object!'))
+  if (!inherits(QpolyA, "QuantifyPolyA")) stop(paste('QpolyA should be a QuantifyPolyA object!'))
   if (!is.data.frame(colData)) stop("'colData' is not a data.frame!")
   if (isEmpty(colData$condition)) stop("'colData' does not contain a 'condition' column!")
   if (!isEmpty(setdiff(rownames(colData),QpolyA@sample_names))) stop("Inconsistency between rownames of 'colData' and sample names!")
@@ -590,7 +590,7 @@ Quantify.CNCAPA <- function(QpolyA,colData,contrast){
 #'
 Quantify.GeneAPA <- function(QpolyA,colData,contrast){
   # Check parameters.
-  if (class(QpolyA) != "QuantifyPolyA") stop(paste('QpolyA should be a QuantifyPolyA object!'))
+  if (!inherits(QpolyA, "QuantifyPolyA")) stop(paste('QpolyA should be a QuantifyPolyA object!'))
   if (!is.data.frame(colData)) stop("'colData' is not a data.frame!")
   if (isEmpty(colData$condition)) stop("'colData' does not contain a 'condition' column!")
   if (!isEmpty(setdiff(rownames(colData),QpolyA@sample_names))) stop("Inconsistency between rownames of 'colData' and sample names!")
