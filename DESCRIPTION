@@ -1,0 +1,59 @@
+Package: QuantifyPolyA
+Type: Package
+Title: Quantify the Poly(A) Profile from 3' End Sequencing Data
+Version: 0.4.0
+Authors@R:
+ person("Congting", "Ye", email = "yec@xmu.edu.cn", role = c("aut", "cre"))
+Description: QuantifyPolyA is a complete and seamless R package for accurately
+ quantifying poly(A) usages under diverse biological conditions. It employs a
+ weighted density peak clustering algorithm to address the innate
+ microheterogeneity of cleavage and polyadenylation.
+License: GPL (>= 3)
+URL: https://yec-bioinfo.github.io/QuantifyPolyA/,
+ https://github.com/yec-bioinfo/QuantifyPolyA,
+ https://sourceforge.net/p/quantifypoly-a/wiki/User%20Manual/
+BugReports: https://github.com/yec-bioinfo/QuantifyPolyA/issues
+Encoding: UTF-8
+Depends:
+ R (>= 4.0)
+Imports:
+ methods,
+ tools,
+ utils,
+ stats,
+ grDevices,
+ Rsamtools,
+ bedr,
+ stringr,
+ matrixStats,
+ dplyr,
+ outliers,
+ pbmcapply,
+ GenomicRanges,
+ GenomicFeatures,
+ txdbmaker,
+ DESeq2,
+ ggplot2,
+ ggalt,
+ ggbio,
+ tidyr,
+ FactoMineR,
+ factoextra,
+ uwot,
+ BiocGenerics,
+ IRanges,
+ S4Vectors,
+ SummarizedExperiment,
+ tidyselect,
+ GenomeInfoDb
+Suggests:
+ knitr,
+ rmarkdown,
+ rtracklayer,
+ ggsci
+Remotes:
+ hrbrmstr/ggalt
+VignetteBuilder: knitr
+NeedsCompilation: no
+Date: 2026-11-05
+Config/roxygen2/version: 8.1.1

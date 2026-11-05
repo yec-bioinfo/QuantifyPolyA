@@ -1,0 +1,47 @@
+url: https://yec-bioinfo.github.io/QuantifyPolyA/
+
+template:
+  bootstrap: 5
+
+home:
+  title: QuantifyPolyA
+
+navbar:
+  structure:
+    left: [intro, reference, articles, news]
+    right: [search, github]
+
+reference:
+  - title: "Workflow"
+    desc: "Main poly(A) quantification workflow"
+    contents:
+      - Load.PolyA
+      - Remove.IP
+      - Cluster.PolyA
+      - Annotate.PolyA
+      - Filter.PolyA
+
+  - title: "APA dynamics"
+    contents:
+      - Quantify.SplitAPA
+      - Quantify.CanonicalAPA
+      - Quantify.CNCAPA
+      - Quantify.GeneAPA
+
+  - title: "Visualization and statistics"
+    contents:
+      - Visualize.PolyA
+      - DESeq2.PolyA
+
+  - title: "Classes and low-level functions"
+    contents:
+      - QuantifyPolyA-class
+      - "`show,QuantifyPolyA-method`"
+      - is.internal.priming
+      - polyAsite.annotation
+      - buildGenomicRanges
+      - simpleCluster
+      - findPeaks
+      - dynamicsDetect
+      - FU
+      - Motif.Search

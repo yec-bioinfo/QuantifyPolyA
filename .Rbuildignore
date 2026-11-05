@@ -1,0 +1,6 @@
+^\.github$
+^_pkgdown\.yml$
+^docs$
+^\.gitignore$
+^\.Rbuildignore$
+^LICENSE$
