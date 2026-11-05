@@ -4,6 +4,7 @@
 
 [![R-CMD-check](https://github.com/yec-bioinfo/QuantifyPolyA/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/yec-bioinfo/QuantifyPolyA/actions/workflows/R-CMD-check.yaml)
 [![License: GPL (>= 3)](https://img.shields.io/badge/license-GPL%20(%3E%3D%203)-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+[![pkgdown](https://github.com/yec-bioinfo/QuantifyPolyA/actions/workflows/pkgdown.yaml/badge.svg)](https://yec-bioinfo.github.io/QuantifyPolyA/)
 
 QuantifyPolyA is a complete and seamless R package for accurately quantifying
 poly(A) site usages under diverse biological conditions. It employs a weighted
@@ -72,9 +73,23 @@ split.APA <- Quantify.SplitAPA(QpolyA, colData,
 
 ## Documentation
 
-- User manual (vignette): `vignette("QuantifyPolyA")` after installation
-- Online manual: <https://sourceforge.net/p/quantifypoly-a/wiki/User%20Manual/>
-- Function reference: `?Load.PolyA`, `?Remove.IP`, `?Cluster.PolyA`, ...
+The user manual is published as a web page, so no R installation is needed to
+read it:
+
+- **Online manual**: <https://yec-bioinfo.github.io/QuantifyPolyA/articles/QuantifyPolyA.html>
+- **Function reference**: <https://yec-bioinfo.github.io/QuantifyPolyA/reference/>
+- **Package home page**: <https://yec-bioinfo.github.io/QuantifyPolyA/>
+
+The same manual ships with the package as a vignette, and every function has
+its own help page:
+
+```r
+vignette("QuantifyPolyA")
+?Remove.IP
+```
+
+The manual for version 0.3.0 is still available on SourceForge:
+<https://sourceforge.net/p/quantifypoly-a/wiki/User%20Manual/>
 
 ## Main functions
 
