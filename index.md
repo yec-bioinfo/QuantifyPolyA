@@ -1,0 +1,134 @@
+# QuantifyPolyA
+
+**Quantification of poly(A) site usage from 3’ end sequencing data**
+
+[![R-CMD-check](https://github.com/yec-bioinfo/QuantifyPolyA/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/yec-bioinfo/QuantifyPolyA/actions/workflows/R-CMD-check.yaml)
+[![License: GPL (\>=
+3)](https://img.shields.io/badge/license-GPL%20(%3E%3D%203)-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+
+QuantifyPolyA is a complete and seamless R package for accurately
+quantifying poly(A) site usages under diverse biological conditions. It
+employs a weighted density peak clustering algorithm to address the
+innate microheterogeneity of cleavage and polyadenylation.
+
+![QuantifyPolyA workflow](reference/figures/quantifypolya-workflow.png)
+
+The schematic diagram of QuantifyPolyA: (a) input preparation, (b)
+internal priming artifact removal, (c) poly(A) site clustering, (d)
+feature annotation, (e) APA dynamics detection, (f) APA visualization.
+
+## Installation
+
+The package is not on CRAN. Install the development version from GitHub:
+
+``` r
+
+# install from GitHub (dependencies are resolved automatically)
+if (!requireNamespace("remotes", quietly = TRUE)) install.packages("remotes")
+remotes::install_github("yec-bioinfo/QuantifyPolyA")
+
+# or with pak
+# pak::pkg_install("yec-bioinfo/QuantifyPolyA")
+```
+
+`ggalt` is distributed on GitHub rather than CRAN; the `Remotes` field
+in `DESCRIPTION` makes `remotes`/`pak` fetch it automatically.
+Bioconductor dependencies are available for R \>= 4.0 via `BiocManager`.
+
+To install from a local source tarball:
+
+``` r
+
+install.packages("QuantifyPolyA_0.4.0.tar.gz", repos = NULL, type = "source")
+```
+
+Note that R does **not** install dependencies for a local tarball; use
+`remotes::install_local("QuantifyPolyA_0.4.0.tar.gz", dependencies = TRUE)`
+or install the dependencies listed in `DESCRIPTION` first.
+
+## Quick start
+
+``` r
+
+library(QuantifyPolyA)
+
+#1. Load raw poly(A) site data (one file per sample)
+QpolyA <- Load.PolyA(dir = "./Test")
+
+#2. Remove internal priming artifacts
+QpolyA <- Remove.IP(QpolyA, fasta = "Genome.fasta")
+
+#3. Cluster poly(A) sites into PACs
+QpolyA <- Cluster.PolyA(QpolyA, max.gapwidth = 24, mc.cores = 4)
+
+#4. Annotate and quantify PACs
+QpolyA <- Annotate.PolyA(QpolyA, gff = "Genome.annotation.gtf")
+
+#5. Quantify APA dynamics between two conditions
+colData <- data.frame(
+ condition = c(rep("Control",2), rep("Treatment",2)),
+ type = "single-end"
+)
+rownames(colData) <- QpolyA@sample_names
+split.APA <- Quantify.SplitAPA(QpolyA, colData,
+ contrast = c("condition", "Control", "Treatment"))
+```
+
+## Documentation
+
+- User manual (vignette):
+  [`vignette("QuantifyPolyA")`](https://yec-bioinfo.github.io/QuantifyPolyA/articles/QuantifyPolyA.md)
+  after installation
+- Online manual:
+  <https://sourceforge.net/p/quantifypoly-a/wiki/User%20Manual/>
+- Function reference:
+  [`?Load.PolyA`](https://yec-bioinfo.github.io/QuantifyPolyA/reference/Load.PolyA.md),
+  [`?Remove.IP`](https://yec-bioinfo.github.io/QuantifyPolyA/reference/Remove.IP.md),
+  [`?Cluster.PolyA`](https://yec-bioinfo.github.io/QuantifyPolyA/reference/Cluster.PolyA.md),
+  …
+
+## Main functions
+
+| Function | Purpose |
+|----|----|
+| [`Load.PolyA()`](https://yec-bioinfo.github.io/QuantifyPolyA/reference/Load.PolyA.md) | Load raw poly(A) site files |
+| [`Remove.IP()`](https://yec-bioinfo.github.io/QuantifyPolyA/reference/Remove.IP.md) | Remove internal priming artifacts |
+| [`Cluster.PolyA()`](https://yec-bioinfo.github.io/QuantifyPolyA/reference/Cluster.PolyA.md) | Cluster sites into PACs (weighted density peak clustering) |
+| [`Annotate.PolyA()`](https://yec-bioinfo.github.io/QuantifyPolyA/reference/Annotate.PolyA.md) | Annotate PACs and build the PAC matrix |
+| [`Filter.PolyA()`](https://yec-bioinfo.github.io/QuantifyPolyA/reference/Filter.PolyA.md) | Filter PACs with low read support |
+| [`Quantify.SplitAPA()`](https://yec-bioinfo.github.io/QuantifyPolyA/reference/Quantify.SplitAPA.md) | APA dynamics among split PACs |
+| [`Quantify.CanonicalAPA()`](https://yec-bioinfo.github.io/QuantifyPolyA/reference/Quantify.CanonicalAPA.md) | APA dynamics among 3’ UTR PACs |
+| [`Quantify.CNCAPA()`](https://yec-bioinfo.github.io/QuantifyPolyA/reference/Quantify.CNCAPA.md) | Canonical vs. non-canonical PAC dynamics |
+| [`Quantify.GeneAPA()`](https://yec-bioinfo.github.io/QuantifyPolyA/reference/Quantify.GeneAPA.md) | APA dynamics across a whole gene |
+| [`Visualize.PolyA()`](https://yec-bioinfo.github.io/QuantifyPolyA/reference/Visualize.PolyA.md) | Plot poly(A) profiles of a gene |
+| [`DESeq2.PolyA()`](https://yec-bioinfo.github.io/QuantifyPolyA/reference/DESeq2.PolyA.md) | Differential PAC analysis with DESeq2 |
+
+## Input format
+
+Raw poly(A) site files are tab-separated with four columns:
+
+| Column     | Explanation                            |
+|------------|----------------------------------------|
+| `seqnames` | Chromosome or contig name              |
+| `strand`   | `+` or `-`                             |
+| `coord`    | Genomic coordinate of the poly(A) site |
+| `score`    | Number of reads supporting the site    |
+
+## Citation
+
+> Ye C, Zhao D, Ye W, Wu X, Ji G, Li QQ, Lin J (2021). QuantifyPoly(A):
+> reshaping alternative polyadenylation landscapes of eukaryotes with
+> weighted density peak clustering. *Briefings in Bioinformatics*.
+> <doi:10.1093/bib/bbab268>
+
+``` r
+
+citation("QuantifyPolyA")
+```
+
+## Contact
+
+Congting Ye <yec@xmu.edu.cn>
+
+Please report bugs at
+<https://github.com/yec-bioinfo/QuantifyPolyA/issues>.
