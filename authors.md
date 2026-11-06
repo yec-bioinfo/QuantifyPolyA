@@ -7,7 +7,7 @@
 ## Citation
 
 Source:
-[`DESCRIPTION`](https://github.com/yec-bioinfo/QuantifyPolyA/blob/main/DESCRIPTION)
+[`DESCRIPTION`](https://github.com/yec-bioinfo/QuantifyPolyA/blob/v0.4.0/DESCRIPTION)
 
 Ye C (2026). *QuantifyPolyA: Quantify the Poly(A) Profile from 3' End
 Sequencing Data*. R package version 0.4.0,
