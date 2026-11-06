@@ -4,7 +4,8 @@ template:
   bootstrap: 5
 
 home:
-  title: QuantifyPolyA
+  title: QuantifyPoly(A)
+  description: Quantification of poly(A) site usage from 3' end sequencing data
 
 navbar:
   structure:

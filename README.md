@@ -1,4 +1,4 @@
-# QuantifyPolyA
+# QuantifyPoly(A)
 
 **Quantification of poly(A) site usage from 3' end sequencing data**
 
@@ -6,14 +6,19 @@
 [![License: GPL (>= 3)](https://img.shields.io/badge/license-GPL%20(%3E%3D%203)-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 [![pkgdown](https://github.com/yec-bioinfo/QuantifyPolyA/actions/workflows/pkgdown.yaml/badge.svg)](https://yec-bioinfo.github.io/QuantifyPolyA/)
 
-QuantifyPolyA is a complete and seamless R package for accurately quantifying
+The tool is called **QuantifyPoly(A)**. It is distributed as the R package
+`QuantifyPolyA`, because R does not allow parentheses in package names, so the
+install commands, the function calls and the `QuantifyPolyA` class all spell
+the name without parentheses.
+
+QuantifyPoly(A) is a complete and seamless R package for accurately quantifying
 poly(A) site usages under diverse biological conditions. It employs a weighted
 density peak clustering algorithm to address the innate microheterogeneity of
 cleavage and polyadenylation.
 
 <img src="man/figures/quantifypolya-workflow.png" width="60%" alt="QuantifyPolyA workflow" />
 
-The schematic diagram of QuantifyPolyA: (a) input preparation, (b) internal
+The schematic diagram of QuantifyPoly(A): (a) input preparation, (b) internal
 priming artifact removal, (c) poly(A) site clustering, (d) feature annotation,
 (e) APA dynamics detection, (f) APA visualization.
 
