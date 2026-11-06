@@ -1,11 +1,16 @@
-# QuantifyPolyA: User Manual
+# QuantifyPoly(A): User Manual
 
-## What is QuantifyPolyA?
+## What is QuantifyPoly(A)?
 
-QuantifyPolyA is a complete and seamless R package for accurately
+QuantifyPoly(A) is a complete and seamless R package for accurately
 quantifying poly(A) site usages under diverse biological conditions. It
 employs a weighted density peak clustering algorithm to address the
 innate microheterogeneity of cleavage and polyadenylation.
+
+The tool is called **QuantifyPoly(A)**. It is distributed as the R
+package `QuantifyPolyA`, because R does not allow parentheses in package
+names, so the install commands, the function calls and the
+`QuantifyPolyA` class all spell the name without parentheses.
 
 If you have any question or comment, please contact Dr. Congting Ye
 (<yec@xmu.edu.cn>). You can also report a bug at
@@ -24,7 +29,7 @@ SAMtools, bedtools and R (\>= 4.0) are required.
 
 ### Install from GitHub
 
-QuantifyPolyA is not distributed through CRAN. The recommended
+QuantifyPoly(A) is not distributed through CRAN. The recommended
 installation resolves all dependencies automatically:
 
 ``` r
@@ -55,15 +60,15 @@ Either use
 `remotes::install_local("QuantifyPolyA_0.4.0.tar.gz", dependencies = TRUE)`
 or install the packages listed in `DESCRIPTION` first.
 
-## How to run QuantifyPolyA
+## How to run QuantifyPoly(A)
 
 There are six major steps: (a) input preparation, (b) internal priming
 artifact removal, (c) poly(A) site clustering, (d) feature annotation,
 (e) APA dynamics detection, and (f) APA visualization.
 
-![The schematic diagram of QuantifyPolyA.](figures/Figure1.png)
+![The schematic diagram of QuantifyPoly(A).](figures/Figure1.png)
 
-The schematic diagram of QuantifyPolyA.
+The schematic diagram of QuantifyPoly(A).
 
 ### (a) Load raw poly(A) site data
 
@@ -287,16 +292,23 @@ standard `ggplot2` functions.
 
 ## Demos
 
-The demo datasets are available from the *Files* tab of the SourceForge
-project page.
+The demo datasets are available from the *Files* tab of the [SourceForge
+project page](https://sourceforge.net/projects/quantifypoly-a/files/).
 
 ### Arabidopsis dataset
 
 Prepare the data:
 
-1.  Download `Arabidopsis_FY.zip` from the SourceForge project page, the
-    TAIR10 genome `TAIR10_chr_all.fas` from TAIR, and the annotation
-    `Arabidopsis_thaliana.TAIR10.45.gtf.gz` from EnsemblPlants.
+1.  Download the three files:
+    - demo data:
+      [`Arabidopsis_FY.zip`](https://sourceforge.net/projects/quantifypoly-a/files/)
+      (from the *Files* tab of the SourceForge project page)
+    - TAIR10 genome:
+      [`TAIR10_chr_all.fas`](https://www.arabidopsis.org/download_files/Genes/TAIR10_genome_release/TAIR10_chromosome_files/TAIR10_chr_all.fas)
+      (from TAIR)
+    - annotation:
+      [`Arabidopsis_thaliana.TAIR10.45.gtf.gz`](https://ftp.ensemblgenomes.ebi.ac.uk/pub/plants/release-45/gtf/arabidopsis_thaliana/Arabidopsis_thaliana.TAIR10.45.gtf.gz)
+      (from EnsemblPlants)
 2.  Move the three files to the working directory and unzip them.
 
 ``` r
@@ -373,9 +385,16 @@ The PCA plot based on the PAC matrix (Arabidopsis dataset).
 
 Prepare the data:
 
-1.  Download `Human_MAQC.zip` from the SourceForge project page, the
-    genome `Homo_sapiens.GRCh38.dna.primary_assembly.fa.gz` and the
-    annotation `Homo_sapiens.GRCh38.101.gtf.gz` from Ensembl.
+1.  Download the three files:
+    - demo data:
+      [`Human_MAQC.zip`](https://sourceforge.net/projects/quantifypoly-a/files/)
+      (from the *Files* tab of the SourceForge project page)
+    - genome:
+      [`Homo_sapiens.GRCh38.dna.primary_assembly.fa.gz`](https://ftp.ensembl.org/pub/release-101/fasta/homo_sapiens/dna/Homo_sapiens.GRCh38.dna.primary_assembly.fa.gz)
+      (from Ensembl)
+    - annotation:
+      [`Homo_sapiens.GRCh38.101.gtf.gz`](https://ftp.ensembl.org/pub/release-101/gtf/homo_sapiens/Homo_sapiens.GRCh38.101.gtf.gz)
+      (from Ensembl)
 2.  Move the three files to the working directory and unzip them.
 
 ``` r
@@ -525,9 +544,9 @@ sessionInfo()
 #> loaded via a namespace (and not attached):
 #>  [1] digest_0.6.39     desc_1.4.3        R6_2.6.1          fastmap_1.2.0    
 #>  [5] xfun_0.62         cachem_1.1.0      knitr_1.52        htmltools_0.5.9  
-#>  [9] png_0.1-9         rmarkdown_2.32    lifecycle_1.0.5   cli_3.6.6        
-#> [13] sass_0.4.10       pkgdown_2.2.1     textshaping_1.0.5 jquerylib_0.1.4  
-#> [17] systemfonts_1.3.2 compiler_4.6.2    tools_4.6.2       ragg_1.5.2       
-#> [21] bslib_0.12.0      evaluate_1.0.5    yaml_2.3.12       otel_0.2.0       
-#> [25] jsonlite_2.0.0    rlang_1.3.0       fs_2.1.0          htmlwidgets_1.6.4
+#>  [9] rmarkdown_2.32    lifecycle_1.0.5   cli_3.6.6         sass_0.4.10      
+#> [13] pkgdown_2.2.1     textshaping_1.0.5 jquerylib_0.1.4   systemfonts_1.3.2
+#> [17] compiler_4.6.2    tools_4.6.2       ragg_1.5.2        bslib_0.12.0     
+#> [21] evaluate_1.0.5    yaml_2.3.12       otel_0.2.0        jsonlite_2.0.0   
+#> [25] rlang_1.3.0       fs_2.1.0          htmlwidgets_1.6.4
 ```

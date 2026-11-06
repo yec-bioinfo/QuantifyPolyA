@@ -2,5 +2,5 @@
 
 ### All vignettes
 
-- [QuantifyPolyA: User
+- [QuantifyPoly(A): User
   Manual](https://yec-bioinfo.github.io/QuantifyPolyA/articles/QuantifyPolyA.md):
