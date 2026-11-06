@@ -11,8 +11,8 @@
 <script src="deps/bootstrap-5.3.8/bootstrap.bundle.min.js"></script><link href="deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
 <link href="deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
 <script src="deps/headroom-0.11.0/headroom.min.js"></script><script src="deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="deps/search-1.0.0/fuse.min.js"></script><script src="deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="QuantifyPolyA">
-<meta name="description" content="QuantifyPolyA is a complete and seamless R package for accurately quantifying poly(A) usages under diverse biological conditions. It employs a weighted density peak clustering algorithm to address the innate microheterogeneity of cleavage and polyadenylation.">
-<meta property="og:description" content="QuantifyPolyA is a complete and seamless R package for accurately quantifying poly(A) usages under diverse biological conditions. It employs a weighted density peak clustering algorithm to address the innate microheterogeneity of cleavage and polyadenylation.">
+<meta name="description" content="A complete and seamless toolkit for accurately quantifying poly(A) site usages under diverse biological conditions. It employs a weighted density peak clustering algorithm to address the innate microheterogeneity of cleavage and polyadenylation.">
+<meta property="og:description" content="A complete and seamless toolkit for accurately quantifying poly(A) site usages under diverse biological conditions. It employs a weighted density peak clustering algorithm to address the innate microheterogeneity of cleavage and polyadenylation.">
 </head>
 <body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
@@ -51,7 +51,7 @@
 <div class="page-header"><h1 id="quantifypolya">QuantifyPolyA<a class="anchor" aria-label="anchor" href="#quantifypolya"></a>
 </h1></div>
 <p><strong>Quantification of poly(A) site usage from 3’ end sequencing data</strong></p>
-<p><a href="https://github.com/yec-bioinfo/QuantifyPolyA/actions/workflows/R-CMD-check.yaml" class="external-link"><img src="https://github.com/yec-bioinfo/QuantifyPolyA/actions/workflows/R-CMD-check.yaml/badge.svg" alt="R-CMD-check"></a> <a href="https://www.gnu.org/licenses/gpl-3.0" class="external-link"><img src="https://img.shields.io/badge/license-GPL%20(%3E%3D%203)-blue.svg" alt="License: GPL (&gt;= 3)"></a></p>
+<p><a href="https://github.com/yec-bioinfo/QuantifyPolyA/actions/workflows/R-CMD-check.yaml" class="external-link"><img src="https://github.com/yec-bioinfo/QuantifyPolyA/actions/workflows/R-CMD-check.yaml/badge.svg" alt="R-CMD-check"></a> <a href="https://www.gnu.org/licenses/gpl-3.0" class="external-link"><img src="https://img.shields.io/badge/license-GPL%20(%3E%3D%203)-blue.svg" alt="License: GPL (&gt;= 3)"></a> <a href="https://yec-bioinfo.github.io/QuantifyPolyA/"><img src="https://github.com/yec-bioinfo/QuantifyPolyA/actions/workflows/pkgdown.yaml/badge.svg" alt="pkgdown"></a></p>
 <p>QuantifyPolyA is a complete and seamless R package for accurately quantifying poly(A) site usages under diverse biological conditions. It employs a weighted density peak clustering algorithm to address the innate microheterogeneity of cleavage and polyadenylation.</p>
 <p><img src="reference/figures/quantifypolya-workflow.png" width="60%" alt="QuantifyPolyA workflow"></p>
 <p>The schematic diagram of QuantifyPolyA: (a) input preparation, (b) internal priming artifact removal, (c) poly(A) site clustering, (d) feature annotation, (e) APA dynamics detection, (f) APA visualization.</p>
@@ -102,12 +102,23 @@
 <div class="section level2">
 <h2 id="documentation">Documentation<a class="anchor" aria-label="anchor" href="#documentation"></a>
 </h2>
+<p>The user manual is published as a web page, so no R installation is needed to read it:</p>
 <ul>
-<li>User manual (vignette): <code><a href="articles/QuantifyPolyA.html">vignette("QuantifyPolyA")</a></code> after installation</li>
-<li>Online manual: <a href="https://sourceforge.net/p/quantifypoly-a/wiki/User%20Manual/" class="external-link uri">https://sourceforge.net/p/quantifypoly-a/wiki/User%20Manual/</a>
+<li>
+<strong>Online manual</strong>: <a href="https://yec-bioinfo.github.io/QuantifyPolyA/articles/QuantifyPolyA.html" class="uri">https://yec-bioinfo.github.io/QuantifyPolyA/articles/QuantifyPolyA.html</a>
 </li>
-<li>Function reference: <code><a href="reference/Load.PolyA.html">?Load.PolyA</a></code>, <code><a href="reference/Remove.IP.html">?Remove.IP</a></code>, <code><a href="reference/Cluster.PolyA.html">?Cluster.PolyA</a></code>, …</li>
+<li>
+<strong>Function reference</strong>: <a href="https://yec-bioinfo.github.io/QuantifyPolyA/reference/" class="uri">https://yec-bioinfo.github.io/QuantifyPolyA/reference/</a>
+</li>
+<li>
+<strong>Package home page</strong>: <a href="https://yec-bioinfo.github.io/QuantifyPolyA/" class="uri">https://yec-bioinfo.github.io/QuantifyPolyA/</a>
+</li>
 </ul>
+<p>The same manual ships with the package as a vignette, and every function has its own help page:</p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/vignette.html" class="external-link">vignette</a></span><span class="op">(</span><span class="st">"QuantifyPolyA"</span><span class="op">)</span></span>
+<span><span class="op">?</span><span class="va">Remove.IP</span></span></code></pre></div>
+<p>The manual for version 0.3.0 is still available on SourceForge: <a href="https://sourceforge.net/p/quantifypoly-a/wiki/User%20Manual/" class="external-link uri">https://sourceforge.net/p/quantifypoly-a/wiki/User%20Manual/</a></p>
 </div>
 <div class="section level2">
 <h2 id="main-functions">Main functions<a class="anchor" aria-label="anchor" href="#main-functions"></a>
@@ -206,7 +217,7 @@
 <blockquote>
 <p>Ye C, Zhao D, Ye W, Wu X, Ji G, Li QQ, Lin J (2021). QuantifyPoly(A): reshaping alternative polyadenylation landscapes of eukaryotes with weighted density peak clustering. <em>Briefings in Bioinformatics</em>. <a href="doi:10.1093/bib/bbab268" class="uri">doi:10.1093/bib/bbab268</a></p>
 </blockquote>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/citation.html" class="external-link">citation</a></span><span class="op">(</span><span class="st">"QuantifyPolyA"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
